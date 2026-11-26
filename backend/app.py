@@ -19,7 +19,10 @@ DB_PATH = os.getenv("DATABASE_PATH", os.path.join(BASE, "academic.db"))
 SECRET = os.getenv("SECRET_KEY", "dev-secret-change-me")
 
 app = Flask(__name__)
-CORS(app, origins=os.getenv("CORS_ORIGINS", "http://localhost:5173").split(","))
+CORS(app, origins=[
+    "http://localhost:5173",
+    "https://smart-academic-assistant.netlify.app"
+])
 
 SCHEMA = """
 CREATE TABLE IF NOT EXISTS users(
